@@ -1,0 +1,1 @@
+srun -w selab3 --gres=gpu --pty bash

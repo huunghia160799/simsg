@@ -86,15 +86,15 @@ if args.checkpoint is None:
     ckpt = args.exp_dir + args.experiment
     args.checkpoint = './{}_model.pt'.format(ckpt)
 
-CONFIG_FILE = args.exp_dir + 'logs/{}/args.yaml'.format(args.experiment)
-IMG_SAVE_PATH = args.exp_dir + 'logs/{}/evaluation/'.format(args.experiment)
-RESULT_SAVE_PATH = args.exp_dir + 'logs/{}/evaluation/results/'.format(args.experiment)
+CONFIG_FILE = os.path.join(args.exp_dir, 'logs/{}/args.yaml'.format(args.experiment))
+IMG_SAVE_PATH = os.path.join(args.exp_dir, 'logs/{}/evaluation/'.format(args.experiment))
+RESULT_SAVE_PATH = os.path.join(args.exp_dir, 'logs/{}/evaluation/results/'.format(args.experiment))
 RESULT_FILE = RESULT_SAVE_PATH + '{}/test_results_{}.pickle'
 
 USE_GT_BOXES = True     # use ground truth bounding boxes for evaluation
 print("feats", args.with_feats)
-torch.cuda.set_device(GPU)
-device = torch.device(GPU)
+torch.cuda.set_device(0)
+device = torch.device(0)
 
 
 def main():
